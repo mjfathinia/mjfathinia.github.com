@@ -1,12 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://mjfathinia.github.com/blog/2011/05/26/extension-methods-in-net/</loc>
+        <lastmod>2013-05-10T10:40:07+04:00</lastmod>
+    </url>
+    <url>
         <loc>http://mjfathinia.github.com/blog/archives/</loc>
-        <lastmod>2013-04-02T12:29:50+04:00</lastmod>
+        <lastmod>2013-05-10T10:40:07+04:00</lastmod>
     </url>
     <url>
         <loc>http://mjfathinia.github.com/</loc>
-        <lastmod>2013-04-02T12:29:50+04:00</lastmod>
+        <lastmod>2013-05-10T10:40:07+04:00</lastmod>
     </url>
     <url>
         <loc>http://mjfathinia.github.com/robots.txt</loc>

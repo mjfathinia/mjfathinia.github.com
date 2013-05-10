@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Cheraq.com</title>
+  <title>Category: tips - Cheraq.com</title>
   <meta name="author" content="Mohammad J. Fathinia">
 
   
-  <meta name="description" content="Sometimes, you need to add new methods to a type, for example, when you are developing a website, you need to use HttpUtility.HtmlEncode() function &hellip;">
+  <meta name="description" content="Category: tips">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mjfathinia.github.com">
+  <link rel="canonical" href="http://mjfathinia.github.comblog/categories/tips">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Cheraq.com" type="application/atom+xml">
@@ -75,109 +75,40 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/26/extension-methods-in-net/">Extension Methods in .NET</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-26T16:19:00+04:00" pubdate data-updated="true">May 26<span>th</span>, 2011</time>
-        
-      </p>
+    <h1 class="entry-title">Category: Tips</h1>
     
   </header>
+  
+  <div id="blog-archives" class="category">
 
 
-  <div class="entry-content"><p>Sometimes, you need to add new methods to a type, for example, when you are developing a website, you need to use <code>HttpUtility.HtmlEncode()</code> function to encode html and then dump it to screen. For example if you have a class called <code>Post</code> and this class has a property called <code>PostTitle</code>, then you need to do like below:</p>
 
-<pre><code>Post p = Post.LoadPost();
-ltPostBody.Text = HttpUtility.HtmlEncode(p.PostTitle);
-</code></pre>
+  
+  <h2>2011</h2>
 
-<p>But if we have a method in string class that does this for us, then life will be easier and we could use something like below:</p>
+<article>
+  
+<h1><a href="/blog/2011/05/26/extension-methods-in-net/">Extension Methods in .NET</a></h1>
+<time datetime="2011-05-26T16:19:00+04:00" pubdate><span class='month'>May</span> <span class='day'>26</span> <span class='year'>2011</span></time>
 
-<pre><code>ltPostBody.Text = p.PostTitle.HtmlEncode();
-</code></pre>
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/csharp/'>csharp</a>, <a class='category' href='/blog/categories/tips/'>tips</a></span>
+</footer>
 
-<p>One way to do this is to modify the <code>Post</code> class and change the type of <code>PostTitle</code> to a derived type that has <code>HtmlEncode</code> method. But this is not a solution. What if you couldn&#8217;t modify the <code>Post</code> class? Or what if you couldn&#8217;t create new derived type because it is sealed by author. Or lots of other scenarios.</p>
 
-<p>The simple solution is, using extension methods. What is it? <a href="http://msdn.microsoft.com/en-us/library/bb383977.aspx">MSDN</a> says:</p>
-
-<blockquote><p>Extension methods enable you to &#8220;add&#8221; methods to existing types without creating a new derived type, recompiling, or otherwise modifying the original type.</p></blockquote>
-
-<p>The advantage of extension methods are, they will be available on all objects derived from that type. So if you add an extension method to <code>string</code> class, then it will be available on all string objects. Let&#8217;s see how we will implement extension methods. Again <a href="http://msdn.microsoft.com/en-us/library/bb383977.aspx">MSDN</a> says:</p>
-
-<blockquote><p>Extension methods are defined as static methods but are called by using instance method syntax. Their first parameter specifies which type the method operates on, and the parameter is preceded by the <code>this</code> modifier. Extension methods are only in scope when you explicitly import the namespace into your source code with a <code>using</code> directive.</p></blockquote>
-
-<p>Let write our own extension method. First we will add new class as below:</p>
-
-<pre><code>namespace Cheraq.Extensions
-{
-    public static class StringExtensions
-    {
-        // our methods will be defined here
-    }
-}
-</code></pre>
-
-<p>Now we will define our extension method:</p>
-
-<pre><code>public static string HTMLEncode(this string phrase)
-{
-    return HttpUtility.HtmlEncode(phrase);
-}
-</code></pre>
-
-<p>First of all, our method should be <code>static</code>. Also if you see the parameter, it is so strange. The first parameter should be defined as below:</p>
-
-<pre><code>this type-that-you-want-to-add-extension-method-to-it parameter-name
-</code></pre>
-
-<p>After that we will define our implementation of the function. When we want to use the function, we need to add using directive to import the namespace. When you import the namespace, the extension method will be available for all object derived from that type. Below image shows our extension method on the auto-complete window. You can see the icon of the extension method is different.</p>
-
-<p><img src="http://cheraq.com/wp-content/uploads/2011/05/ext-1.jpg" alt="HTMLEncode is an extension method, so it got a different icon." /></p>
-
-<p>The usage of extension method is same as normal method of that type. You can even add extension method to sealed class. But this will not violate the principal of encapsulation, because extended methods cannot access private variable and methods in the type they are extending. Below you can find summary of some facts about extension methods:</p>
-
-<ul>
-<li>Extension methods can only access private variable and methods in the type they are extending!</li>
-<li>You cannot use them to override methods of a class or interface</li>
-<li>They have lower priority than instance methods defined in the type itself. In other words, compiler first looks into the instance methods; if did not find any method with same signature, then it will search in extension methods</li>
-<li>Extension methods are brought into scope at the namespace level</li>
-<li>If you do not have access to the code of the type that you are extending, then it is better to keep in mind that changes in that type might break the extension method</li>
-</ul>
+</article>
 
 </div>
-  
-  
 
-
-    </article>
   
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+</article>
+
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -194,7 +125,7 @@ ltPostBody.Text = HttpUtility.HtmlEncode(p.PostTitle);
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/mjfathinia">@mjfathinia</a> on GitHub
@@ -235,6 +166,7 @@ ltPostBody.Text = HttpUtility.HtmlEncode(p.PostTitle);
 
   
 </aside>
+
 
     </div>
   </div>

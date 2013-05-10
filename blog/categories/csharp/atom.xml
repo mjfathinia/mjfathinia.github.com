@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Cheraq.com]]></title>
-  <link href="http://mjfathinia.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: csharp | Cheraq.com]]></title>
+  <link href="http://mjfathinia.github.com/blog/categories/csharp/atom.xml" rel="self"/>
   <link href="http://mjfathinia.github.com/"/>
   <updated>2013-05-10T10:47:30+04:00</updated>
   <id>http://mjfathinia.github.com/</id>
@@ -33,7 +33,7 @@ ltPostBody.Text = HttpUtility.HtmlEncode(p.PostTitle);
 
 <p>The simple solution is, using extension methods. What is it? <a href="http://msdn.microsoft.com/en-us/library/bb383977.aspx">MSDN</a> says:</p>
 
-<blockquote><p>Extension methods enable you to &#8220;add&#8221; methods to existing types without creating a new derived type, recompiling, or otherwise modifying the original type.</p></blockquote>
+<blockquote><p>Extension methods enable you to "add" methods to existing types without creating a new derived type, recompiling, or otherwise modifying the original type.</p></blockquote>
 
 <p>The advantage of extension methods are, they will be available on all objects derived from that type. So if you add an extension method to <code>string</code> class, then it will be available on all string objects. Let&#8217;s see how we will implement extension methods. Again <a href="http://msdn.microsoft.com/en-us/library/bb383977.aspx">MSDN</a> says:</p>
 
