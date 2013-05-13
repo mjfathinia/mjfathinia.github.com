@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: aspnet | Cheraq.com]]></title>
+  <link href="http://mjfathinia.github.com/blog/categories/aspnet/atom.xml" rel="self"/>
+  <link href="http://mjfathinia.github.com/"/>
+  <updated>2013-05-13T16:39:26+04:00</updated>
+  <id>http://mjfathinia.github.com/</id>
+  <author>
+    <name><![CDATA[Mohammad J. Fathinia]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Resolve URL in absence of Page Object]]></title>
+    <link href="http://mjfathinia.github.com/blog/2011/05/27/resolve-url-in-absence-of-page-object/"/>
+    <updated>2011-05-27T14:04:00+04:00</updated>
+    <id>http://mjfathinia.github.com/blog/2011/05/27/resolve-url-in-absence-of-page-object</id>
+    <content type="html"><![CDATA[<p>To find out the virtual path, you can use below property of <code>HttpRuntime</code>:</p>
+
+<pre><code>HttpRuntime.AppDomainAppVirtualPath
+</code></pre>
+
+<p>And in order to resolve the URL to relative path to the site root, you can simply replace &#8220;~&#8221; with the value of <code>HttpRuntime.AppDomainAppVirtualPath</code> and you have your resolved path. Below you can find an extension class to <code>HttpServerUtility</code> that adds <code>ResolveUrl</code> method, and you can use <code>ResolveUrl</code> and <code>MapPath</code> of the <code>HttpContext.Current.Server</code>.</p>
+
+<pre><code>public static class HttpServerUtilityExtensions
+{
+    public static string ResolveUrl(
+        this HttpServerUtility server,
+        string virtualPath
+        )
+    {
+        if (virtualPath.StartsWith("~/"))
+        {
+            return string.Format("{0}/{1}",
+                HttpRuntime.AppDomainAppVirtualPath,
+                virtualPath.Substring(2)
+            );
+        }
+        return virtualPath;
+    }
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
