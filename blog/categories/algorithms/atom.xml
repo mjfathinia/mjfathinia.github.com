@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: algorithms | Cheraq.com]]></title>
-  <link href="http://mjfathinia.github.com/blog/categories/algorithms/atom.xml" rel="self"/>
-  <link href="http://mjfathinia.github.com/"/>
-  <updated>2013-05-13T16:39:26+04:00</updated>
-  <id>http://mjfathinia.github.com/</id>
+  <link href="http://cheraq.com/blog/categories/algorithms/atom.xml" rel="self"/>
+  <link href="http://cheraq.com/"/>
+  <updated>2013-05-27T12:34:42+04:00</updated>
+  <id>http://cheraq.com/</id>
   <author>
     <name><![CDATA[Mohammad J. Fathinia]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Algorithms: What? Why? When? How?]]></title>
-    <link href="http://mjfathinia.github.com/blog/2011/07/05/algorithms-what-why-when-how/"/>
+    <link href="http://cheraq.com/blog/2011/07/05/algorithms-what-why-when-how/"/>
     <updated>2011-07-05T19:35:00+04:00</updated>
-    <id>http://mjfathinia.github.com/blog/2011/07/05/algorithms-what-why-when-how</id>
+    <id>http://cheraq.com/blog/2011/07/05/algorithms-what-why-when-how</id>
     <content type="html"><![CDATA[<p>We&#8217;ve heard about algorithms a lot. In this short article, I am going to a little bit talk about algorithms, their importance, etc. which will be the first post in my Algorithms series. If you follow the series, you will get familiar with different type of algorithms, old and classic ones, or new and heuristic ones. Just follow the series.</p>
 
 <h2>What is an algorithm?</h2>
@@ -47,7 +47,7 @@
 
 <h2>How we can compare two algorithms?</h2>
 
-<p>Well, if there are different algorithms to solve a problem, then there should be some ways to compare them (I'm genius). We usually compare two algorithms based on their <strong>time</strong> and <strong>space complexity</strong>. Time and space complexity are not indicating the exact amount of time/space are required to solve a problem; instead they indicate how the time/space requirements will grow when the problem size grows. Since we want to study how the time/space requirements will grow, then we don't need to consider the exact equation of time/space complexity; We can just consider the biggest factor. Let's see this in below simple example.</p>
+<p>Well, if there are different algorithms to solve a problem, then there should be some ways to compare them (I&#8217;m genius). We usually compare two algorithms based on their <strong>time</strong> and <strong>space complexity</strong>. Time and space complexity are not indicating the exact amount of time/space are required to solve a problem; instead they indicate how the time/space requirements will grow when the problem size grows. Since we want to study how the time/space requirements will grow, then we don't need to consider the exact equation of time/space complexity; We can just consider the biggest factor. Let's see this in below simple example.</p>
 
 <h3>Finding an item in an ordered list</h3>
 

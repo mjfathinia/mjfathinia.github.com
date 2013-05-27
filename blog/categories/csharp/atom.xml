@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: csharp | Cheraq.com]]></title>
-  <link href="http://mjfathinia.github.com/blog/categories/csharp/atom.xml" rel="self"/>
-  <link href="http://mjfathinia.github.com/"/>
-  <updated>2013-05-13T16:39:26+04:00</updated>
-  <id>http://mjfathinia.github.com/</id>
+  <link href="http://cheraq.com/blog/categories/csharp/atom.xml" rel="self"/>
+  <link href="http://cheraq.com/"/>
+  <updated>2013-05-27T12:34:42+04:00</updated>
+  <id>http://cheraq.com/</id>
   <author>
     <name><![CDATA[Mohammad J. Fathinia]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Extension Methods in .NET]]></title>
-    <link href="http://mjfathinia.github.com/blog/2011/05/26/extension-methods-in-net/"/>
+    <link href="http://cheraq.com/blog/2011/05/26/extension-methods-in-net/"/>
     <updated>2011-05-26T16:19:00+04:00</updated>
-    <id>http://mjfathinia.github.com/blog/2011/05/26/extension-methods-in-net</id>
+    <id>http://cheraq.com/blog/2011/05/26/extension-methods-in-net</id>
     <content type="html"><![CDATA[<p>Sometimes, you need to add new methods to a type, for example, when you are developing a website, you need to use <code>HttpUtility.HtmlEncode()</code> function to encode html and then dump it to screen. For example if you have a class called <code>Post</code> and this class has a property called <code>PostTitle</code>, then you need to do like below:</p>
 
 <pre><code>Post p = Post.LoadPost();

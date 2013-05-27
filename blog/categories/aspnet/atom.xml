@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: aspnet | Cheraq.com]]></title>
-  <link href="http://mjfathinia.github.com/blog/categories/aspnet/atom.xml" rel="self"/>
-  <link href="http://mjfathinia.github.com/"/>
-  <updated>2013-05-13T16:39:26+04:00</updated>
-  <id>http://mjfathinia.github.com/</id>
+  <link href="http://cheraq.com/blog/categories/aspnet/atom.xml" rel="self"/>
+  <link href="http://cheraq.com/"/>
+  <updated>2013-05-27T12:34:42+04:00</updated>
+  <id>http://cheraq.com/</id>
   <author>
     <name><![CDATA[Mohammad J. Fathinia]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Resolve URL in absence of Page Object]]></title>
-    <link href="http://mjfathinia.github.com/blog/2011/05/27/resolve-url-in-absence-of-page-object/"/>
+    <link href="http://cheraq.com/blog/2011/05/27/resolve-url-in-absence-of-page-object/"/>
     <updated>2011-05-27T14:04:00+04:00</updated>
-    <id>http://mjfathinia.github.com/blog/2011/05/27/resolve-url-in-absence-of-page-object</id>
+    <id>http://cheraq.com/blog/2011/05/27/resolve-url-in-absence-of-page-object</id>
     <content type="html"><![CDATA[<p>To find out the virtual path, you can use below property of <code>HttpRuntime</code>:</p>
 
 <pre><code>HttpRuntime.AppDomainAppVirtualPath

@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://mjfathinia.github.com/sitemap.xml 
+Sitemap: http://cheraq.com/sitemap.xml 
