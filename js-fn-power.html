@@ -5,11 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>JavaScript and Framework selection dilemma | By Mohammad J. Fathinia</title>
-  <meta name="description" content="JavaScript is one of the most used languages nowadays, and everyday more and more things are being shipped to JavaScript. Especially with ES6, JavaScript tur...">
+  <title>JS: The Power of Functions | By Mohammad J. Fathinia</title>
+  <meta name="description" content="In JS, function is the BOSS. It is the way to build classes (before ES6 it was the only way), defines scope, etc. ES6 changed this a bit, but still function ...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://cheraq.com/js/front-end/2016/03/19/js-delimma-framework.html">
+  <link rel="canonical" href="http://cheraq.com/js-fn-power">
   <link rel="alternate" type="application/rss+xml" title="Cheraq.com" href="http://cheraq.com/feed.xml">
   <link href='https://fonts.googleapis.com/css?family=Caesar+Dressing|Arvo:700|Lato:400,700,400italic' rel='stylesheet' type='text/css'>
 </head>
@@ -39,24 +39,38 @@
 
     <main>
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <h2 itemprop="name headline">JavaScript and Framework selection dilemma</h2>
-  <p class="post-meta"><time datetime="2016-03-19T21:00:48+01:00" itemprop="datePublished">Mar 19, 2016</time></p>
+  <h2 itemprop="name headline">JS: The Power of Functions</h2>
+  <p class="post-meta"><time datetime="2016-04-19T18:00:00+02:00" itemprop="datePublished">Apr 19, 2016</time></p>
   <div class="post-content" itemprop="articleBody">
-    <p>So you need a JavaScript framework for your next project and not sure what to use? Maybe React? Angular 
-looks so promising (Google is behind it, and whatever they do is awesome)! What about Ember? Or just pure JS?</p>
+    <p>In JS, function is the BOSS. It is the way to build classes (before ES6 it was the only way), 
+defines scope, etc. ES6 changed this a bit, but still function is your most powerful tool in JS.</p>
 
-<p>Well the answer to this question isn’t that easy. But here is the formula:</p>
+<p>In JS you can pass function as argument to another function, 
+or you can return it as result. Here is an example that uses both.</p>
 
-<ol>
-  <li>If you are just trying something to see if it works, then whatever that you are good at, should be the best. Once you build your first prototype and it worked, then you probably know exactly what you want to build so proceed to (2).</li>
-  <li>If you exactly know what you want to build, then determine main challenges and see which framework can help, use the one that needs less persuasion and hacks.</li>
-  <li>If you just want yo try something and also eager to learn something new, then pick the one that impress you more, because you have bumpy road ahead and only passion can keep pushing you forward.</li>
-</ol>
+<div class="highlighter-rouge"><pre class="highlight"><code>function forEach ( arr ) {
+    function action ( fn ) {
+        for ( var i in arr ) {
+            fn ( arr [ i ] );
+        }
+        return action;
+    }
+    return action;
+}
 
-<p>And always remember that frameworks and tools are made for certain requirements which might not be your requirements. So the tool you finally pick will not 100% fit and it supposed to just help to solve part of the problem. The rest you should solve on your own.</p>
+var x =0;
+forEach ( [ 1 , 2 , 3 ] ) ( function ( i ) {
+    x+=i;
+});
+// x = 6
+</code></pre>
+</div>
 
-<p><strong>One last thing, don’t be afraid of breaking things.</strong></p>
+<p>This function accepts an array as argument, then returns a function that 
+accepts a function as arguments, and calls it for every item in array (with value as argument).</p>
 
+<p>Note that action function will return itself, means you can chain it and do as many loops as you want 
+on the array with different functions.</p>
 
   </div>
 

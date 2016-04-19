@@ -6,9 +6,50 @@
 </description>
     <link>http://cheraq.com/</link>
     <atom:link href="http://cheraq.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 17 Apr 2016 15:20:27 +0200</pubDate>
-    <lastBuildDate>Sun, 17 Apr 2016 15:20:27 +0200</lastBuildDate>
+    <pubDate>Tue, 19 Apr 2016 19:57:36 +0200</pubDate>
+    <lastBuildDate>Tue, 19 Apr 2016 19:57:36 +0200</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>JS: The Power of Functions</title>
+        <description>&lt;p&gt;In JS, function is the BOSS. It is the way to build classes (before ES6 it was the only way), 
+defines scope, etc. ES6 changed this a bit, but still function is your most powerful tool in JS.&lt;/p&gt;
+
+&lt;p&gt;In JS you can pass function as argument to another function, 
+or you can return it as result. Here is an example that uses both.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function forEach ( arr ) {
+    function action ( fn ) {
+        for ( var i in arr ) {
+            fn ( arr [ i ] );
+        }
+        return action;
+    }
+    return action;
+}
+
+var x =0;
+forEach ( [ 1 , 2 , 3 ] ) ( function ( i ) {
+    x+=i;
+});
+// x = 6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This function accepts an array as argument, then returns a function that 
+accepts a function as arguments, and calls it for every item in array (with value as argument).&lt;/p&gt;
+
+&lt;p&gt;Note that action function will return itself, means you can chain it and do as many loops as you want 
+on the array with different functions.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 19 Apr 2016 18:00:00 +0200</pubDate>
+        <link>http://cheraq.com/js-fn-power</link>
+        <guid isPermaLink="true">http://cheraq.com/js-fn-power</guid>
+        
+        
+        <category>JS</category>
+        
+      </item>
     
       <item>
         <title>JavaScript and Framework selection dilemma</title>
@@ -28,14 +69,12 @@ looks so promising (Google is behind it, and whatever they do is awesome)! What 
 &lt;p&gt;&lt;strong&gt;One last thing, don’t be afraid of breaking things.&lt;/strong&gt;&lt;/p&gt;
 
 </description>
-        <pubDate>Sat, 19 Mar 2016 21:00:48 +0100</pubDate>
-        <link>http://cheraq.com/js/front-end/2016/03/19/js-delimma-framework.html</link>
-        <guid isPermaLink="true">http://cheraq.com/js/front-end/2016/03/19/js-delimma-framework.html</guid>
+        <pubDate>Sat, 19 Mar 2016 18:00:48 +0100</pubDate>
+        <link>http://cheraq.com/js-framework-dilemma</link>
+        <guid isPermaLink="true">http://cheraq.com/js-framework-dilemma</guid>
         
         
         <category>JS</category>
-        
-        <category>front-end</category>
         
       </item>
     
