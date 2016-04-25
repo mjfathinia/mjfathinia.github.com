@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>JS Design Pattern Heads-Up | By Mohammad J. Fathinia</title>
+  <meta name="description" content="In JS, because of it nature, which is kind of dynamic, not strongly typed language, lots of design patterns can fall into traps and/or expose what it shouldn...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://cheraq.com/js-dp">
+  <link rel="alternate" type="application/rss+xml" title="Cheraq.com" href="http://cheraq.com/feed.xml">
+  <link href='https://fonts.googleapis.com/css?family=Caesar+Dressing|Arvo:700|Lato:400,700,400italic' rel='stylesheet' type='text/css'>
+</head>
+
+  <body>
+    <a href="#content" class="skip-link">Skip to content</a>
+    <header>
+    <h1 class="logo"><a href="/">Cheraq.com</a></h1>
+    <!--nav>
+        <h2 class="hide-text">Contents</h2>
+        <ul>
+            <li><a href="/">Home</a></li>
+            
+            
+            <li><a href="/about/">About</a></li>
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+    </nav-->
+</header>
+
+    <main>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <h2 itemprop="name headline">JS Design Pattern Heads-Up</h2>
+  <p class="post-meta"><time datetime="2016-04-25T18:00:00+02:00" itemprop="datePublished">Apr 25, 2016</time></p>
+  <div class="post-content" itemprop="articleBody">
+    <p>Usually when you want to make efficient JS class, you want to keep as much as you can in prototype, and define less instant 
+specific methods. To do so, you will make something like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var Cell = function () {
+    this.neighbors = new Array ( 8 );
+    return {
+        addNeighbor : _proxy( this.add , this )
+    }
+}
+
+Cell.prototype.add = function ( cell , i ) {
+    if ( this.neighbors [ i ] ) 
+        return;
+    this.neighbors [ i ] = cell;
+    cell.addNeighbor ( this , ( i + 4 ) % 8 ) );
+}
+
+function _proxy ( fn , me ) {
+    return function () {
+        fn.apply ( me , arguments );
+    }
+}
+</code></pre>
+</div>
+
+<p>Here what we do is, we hide the class behind an object which provides some methods to modify the underneath class object. 
+This is same as using interfaces in object oriented languages. The issue is, in JS we don’t have access to 
+that interface normally.</p>
+
+<p>Here we have a cell for the grid, which can have 8 neighbors and it stores them in an array. When you add a cell to another 
+cell as neighbor, it will also add it as neighbor to the passed cell. What happens here is, the last line will just expose 
+the class object, instead of interface object we made which can lead to exposing unwanted information or methods.</p>
+
+<p>One way to avoid that is, to store the interface object in a variable and use that as shown below.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var Cell = function () {
+    this.neighbors = new Array ( 8 );
+    this._interface_ = {
+        addNeighbor : _proxy( this.add , this )
+    };
+    return this._interface_;
+}
+
+Cell.prototype.add = function ( cell , i ) {
+    if ( this.neighbors [ i ] ) 
+        return;
+    this.neighbors [ i ] = cell;
+    cell.addNeighbor ( this._interface_ , ( i + 4 ) % 8 ) );
+}
+</code></pre>
+</div>
+
+<p><strong>Note: This is just a quick fix for that issue, and it can also lead to other kind of issues, so
+think about what you want to do, and how you want to protect your code.</strong></p>
+
+  </div>
+
+</article>
+
+    </main>
+
+    <footer>
+    <h2>About</h2>
+    <p>Hey there! I am Mohammad J. Fathinia, Front-end developer at Booking.com. I love 
+        experimenting and playing with cutting edge tools and technologies. I enjoy problem 
+        solving and dealing with challenges. Wanna discuss about what you found in this blog, 
+        or just wanna talk? Then use below Social Media channels:</p>
+    <ul class="social-media">
+        <li><a href="https://twitter.com/mjfathinia">Twitter</a></li>
+        <li><a href="https://fb.com/mohammad.j.fathinia">Facebook</a></li>
+        <li><a href="https://github.com/mjfathinia">Github</a></li>
+    </ul>
+    <p class="copyright">
+        <b>Copyright &copy; until we meet again;</b> All content in this blog are 
+        <b>experimental</b>; If you are going to use it on production website, wear your safety 
+        helmet! Let's share our knowledge and evolve the web even faster.
+    </p>
+</footer>
+
+
+  </body>
+
+</html>
