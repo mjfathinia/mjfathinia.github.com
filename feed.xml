@@ -6,9 +6,75 @@
 </description>
     <link>http://cheraq.com/</link>
     <atom:link href="http://cheraq.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 19 Apr 2016 19:57:36 +0200</pubDate>
-    <lastBuildDate>Tue, 19 Apr 2016 19:57:36 +0200</lastBuildDate>
+    <pubDate>Mon, 25 Apr 2016 20:31:07 +0200</pubDate>
+    <lastBuildDate>Mon, 25 Apr 2016 20:31:07 +0200</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>JS Design Pattern Heads-Up</title>
+        <description>&lt;p&gt;Usually when you want to make efficient JS class, you want to keep as much as you can in prototype, and define less instant 
+specific methods. To do so, you will make something like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var Cell = function () {
+    this.neighbors = new Array ( 8 );
+    return {
+        addNeighbor : _proxy( this.add , this )
+    }
+}
+
+Cell.prototype.add = function ( cell , i ) {
+    if ( this.neighbors [ i ] ) 
+        return;
+    this.neighbors [ i ] = cell;
+    cell.addNeighbor ( this , ( i + 4 ) % 8 ) );
+}
+
+function _proxy ( fn , me ) {
+    return function () {
+        fn.apply ( me , arguments );
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here what we do is, we hide the class behind an object which provides some methods to modify the underneath class object. 
+This is same as using interfaces in object oriented languages. The issue is, in JS we don’t have access to 
+that interface normally.&lt;/p&gt;
+
+&lt;p&gt;Here we have a cell for the grid, which can have 8 neighbors and it stores them in an array. When you add a cell to another 
+cell as neighbor, it will also add it as neighbor to the passed cell. What happens here is, the last line will just expose 
+the class object, instead of interface object we made which can lead to exposing unwanted information or methods.&lt;/p&gt;
+
+&lt;p&gt;One way to avoid that is, to store the interface object in a variable and use that as shown below.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var Cell = function () {
+    this.neighbors = new Array ( 8 );
+    this._interface_ = {
+        addNeighbor : _proxy( this.add , this )
+    };
+    return this._interface_;
+}
+
+Cell.prototype.add = function ( cell , i ) {
+    if ( this.neighbors [ i ] ) 
+        return;
+    this.neighbors [ i ] = cell;
+    cell.addNeighbor ( this._interface_ , ( i + 4 ) % 8 ) );
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Note: This is just a quick fix for that issue, and it can also lead to other kind of issues, so
+think about what you want to do, and how you want to protect your code.&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 25 Apr 2016 18:00:00 +0200</pubDate>
+        <link>http://cheraq.com/js-dp</link>
+        <guid isPermaLink="true">http://cheraq.com/js-dp</guid>
+        
+        
+        <category>JS</category>
+        
+      </item>
     
       <item>
         <title>JS: The Power of Functions</title>
